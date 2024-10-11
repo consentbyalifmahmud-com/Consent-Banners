@@ -13,9 +13,15 @@
     --bannerAccentColor: #f6cd49;
     --bannerColorWhite: rgb(255, 255, 255);
     --mainCookieBgColor: rgb(242, 242, 242);
-    --InsideBorderColor: rgb(210, 218, 226);
+    --InsideBorderColor: rgb(217, 217, 217);
     --cookieTotalFontSize: 11px;
     --noCookieFontSize: 13px;
+    --cookieValueWeight: 400;
+}
+
+.cookieValue {
+    font-weight: var(--cookieValueWeight);
+    color: var(--cookieDescriptionColor);
 }
 
 /* :root{
@@ -98,13 +104,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid rgb(217, 217, 217);
+    border-bottom: 1px solid var(--InsideBorderColor);
 }
 
 .bannerSectionHeadlineWrapper div{
     width: 100%;
     text-align: center;
-    border: var(--textBorder);
+    border: var(--InsideBorderColor);
     padding: 20px 0px;
     cursor: pointer;
     display: flex !important;
@@ -148,7 +154,8 @@
     justify-content: space-between;
     column-gap: 20px;
     padding-top: 25px;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+/*     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset; */
+    border-top: 1px solid var(--InsideBorderColor);
 }
 
 .bannerBottomSectionWrapper button{
@@ -488,6 +495,7 @@ div#dark svg {
     filter: blur(1px);
 }
 
+/* medias */
 /* medias */
 @media only screen and (max-width: 900px) {
     .cookieBannerWrapper{
