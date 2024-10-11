@@ -1,3 +1,9 @@
+const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@fec525de87a731076bb6c50092fb6a5b0524d41a/ll-lenksysteme.at/mystyle.css';
+document.head.appendChild(link);
+
+
 window.dataLayer = window.dataLayer || [];
 
 function gtag(){
@@ -547,6 +553,7 @@ window.addEventListener("load", function(){
 
         //categoryKey for the english version
         var categoryText = ["Notwendig", "Präferenzen", "Statistiken", "Marketing", "Nicht klassifiziert"];
+        var larnMoreText = "Erfahren Sie mehr über den Anbieter";
 
         // Iterate through each category and build the HTML
         Object.keys(cookieCategories).forEach((categoryKey, index) => {
@@ -603,7 +610,7 @@ window.addEventListener("load", function(){
                                 </div>
                             </div>
                             <div class="cookieProviderLearnMore">
-                                <a target="_blank" href="${providerCookies[0].privacy_rights_portals}" class="cookieHeadline">Learn more about ${providerName}</a>
+                                <a target="_blank" href="${providerCookies[0].privacy_rights_portals}" class="cookieHeadline">${larnMoreText}</a>
                                 <svg width="25px" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 192 192" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M84 128.6H54.6C36.6 128.6 22 114 22 96c0-9 3.7-17.2 9.6-23.1 5.9-5.9 14.1-9.6 23.1-9.6H84m24 65.3h29.4c9 0 17.2-3.7 23.1-9.6 5.9-5.9 9.6-14.1 9.6-23.1 0-18-14.6-32.6-32.6-32.6H108M67.9 96h56.2" style="fill:none;stroke:#000000;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"></path></g></svg>
                             </div>`;
 
@@ -984,7 +991,7 @@ window.addEventListener("load", function(){
 
                     gtag('consent', 'update', consent);
                     dataLayer(consent);
-                    
+
                     setTimeout(function(){
                         removeLoaderAndBlur()
                         showHide(false, true);
