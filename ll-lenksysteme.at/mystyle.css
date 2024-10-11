@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
-    --bannerFont: "Urbanist", sans-serif;
+    --bannerFont: "Montserrat", sans-serif;
     --cookieHeadlineColor: rgb(20, 20, 20);
-    --cookieHeadlineFontSize: 15px;
+    --cookieHeadlineFontSize: 13px;
     --cookieHeadlineFontWeight: 600;
     --cookieDescriptionColor: rgb(4, 5, 9);
-    --cookieDescriptionFontSize: 14px;
+    --cookieDescriptionFontSize: 12px;
     --cookieDescriptionFontWeight: 400;
-    --cookieDescriptionLineHeight: 25px;
+    --cookieDescriptionLineHeight: 22px;
     --bannerTotalFont: 13px;
     --bannerAccentColor: #f6cd49;
     --bannerColorWhite: rgb(255, 255, 255);
@@ -500,6 +500,16 @@ div#dark svg {
         display: flex;
         flex-direction: column;
         row-gap: 12px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    :root{
+        --cookieHeadlineFontSize: 11px;
+        --cookieDescriptionFontSize: 10px;
+        --bannerTotalFont: 13px;
+        --cookieTotalFontSize: 10px;
+        --noCookieFontSize: 13px;
     }
 }
 
