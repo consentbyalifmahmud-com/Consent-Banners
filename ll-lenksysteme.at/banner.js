@@ -70,11 +70,11 @@ function getTheContinentInfo(){
 
     checkContinent(continent);
 
-    //console.log(continent)
+    console.log(continent)
 }
 
 
-var enabledContinent = ["Europe", "Asia"];
+var enabledContinent = ["Asia", "Europe", "Africa" , "NorthAmerica", "Australia", "Antarctica", "Unknown"];
 
 var consentValue = ["granted", "denied"];
 
@@ -156,7 +156,142 @@ checkContinent();
 updateConsent();
 
 window.addEventListener("load", function(){
-    // Example data for cookie categories
+
+    var manualCookie = [
+        {
+            "id": "1",
+            "platform": "Custom",
+            "category": "Necessary",
+            "data_key": "XSRF-TOKEN",
+            "domain": "ll-lenksysteme.at",
+            "description": "Wird verwendet, um Cross-Site-Request-Fälschung zu verhindern.",
+            "retention_period": "Sitzung",
+            "data_controller": "ll-lenksysteme.at",
+            "privacy_rights_portals": "https://www.ll-lenksysteme.at/datenschutz",
+            "wildcard_match": 0
+        },
+        {
+            "id": "2",
+            "platform": "Facebook",
+            "category": "Marketing",
+            "data_key": "_fbp",
+            "domain": "ll-lenksysteme.at",
+            "description": "Wird von Facebook verwendet, um eine Reihe von Werbeprodukten zu liefern, z. B. Echtzeitgebote von Drittanbietern.",
+            "retention_period": "39 Tage",
+            "data_controller": "Facebook",
+            "privacy_rights_portals": "https://www.facebook.com/policy.php",
+            "wildcard_match": 0
+        },
+        {
+            "id": "3",
+            "platform": "Custom",
+            "category": "Preferences",
+            "data_key": "bSession",
+            "domain": "ll-lenksysteme.at",
+            "description": "Sitzungs-ID-Cookie zur Aufrechterhaltung des Benutzerstatus.",
+            "retention_period": "46 Minuten",
+            "data_controller": "ll-lenksysteme.at",
+            "privacy_rights_portals": "https://www.ll-lenksysteme.at/datenschutz",
+            "wildcard_match": 0
+        },
+        {
+            "id": "4",
+            "platform": "Custom",
+            "category": "Necessary",
+            "data_key": "hs",
+            "domain": "ll-lenksysteme.at",
+            "description": "Wird für Sitzungsverwaltung und Sicherheit verwendet.",
+            "retention_period": "Sitzung",
+            "data_controller": "ll-lenksysteme.at",
+            "privacy_rights_portals": "https://www.ll-lenksysteme.at/datenschutz",
+            "wildcard_match": 0
+        },
+        {
+            "id": "5",
+            "platform": "Custom",
+            "category": "Statistics",
+            "data_key": "ssr-caching",
+            "domain": "ll-lenksysteme.at",
+            "description": "Caching-Cookie, das verwendet wird, um den Server zu bestimmen, der die zwischengespeicherte Antwort bereitstellt.",
+            "retention_period": "75 Minuten",
+            "data_controller": "ll-lenksysteme.at",
+            "privacy_rights_portals": "https://www.ll-lenksysteme.at/datenschutz",
+            "wildcard_match": 0
+        },
+        {
+            "id": "6",
+            "platform": "Custom",
+            "category": "Preferences",
+            "data_key": "svSession",
+            "domain": "ll-lenksysteme.at",
+            "description": "Verfolgt Benutzersitzungen auf der Website, um die Benutzererfahrung zu verbessern.",
+            "retention_period": "297 Tage",
+            "data_controller": "ll-lenksysteme.at",
+            "privacy_rights_portals": "https://www.ll-lenksysteme.at/datenschutz",
+            "wildcard_match": 0
+        },
+        {
+            "id": "7",
+            "platform": "Facebook",
+            "category": "Marketing",
+            "data_key": "_fbc",
+            "domain": "ll-lenksysteme.at",
+            "description": "Wird verwendet, um den Erfolg von Facebook-Werbung zu messen.",
+            "retention_period": "90 Tage",
+            "data_controller": "Facebook",
+            "privacy_rights_portals": "https://www.facebook.com/policy.php",
+            "wildcard_match": 0
+        },
+        {
+            "id": "8",
+            "platform": "Google Ads",
+            "category": "Marketing",
+            "data_key": "gclid",
+            "domain": "ll-lenksysteme.at",
+            "description": "Wird verwendet, um den Erfolg von Google Ads zu messen und Werbedaten für Google Ads Conversion Tracking zu erfassen.",
+            "retention_period": "30 Tage",
+            "data_controller": "Google",
+            "privacy_rights_portals": "https://policies.google.com/privacy",
+            "wildcard_match": 0
+        },
+        {
+            "id": "9",
+            "platform": "Google Analytics",
+            "category": "Statistics",
+            "data_key": "_ga",
+            "domain": "ll-lenksysteme.at",
+            "description": "Wird verwendet, um Benutzer zu unterscheiden und Website-Statistiken zu generieren.",
+            "retention_period": "2 Jahre",
+            "data_controller": "Google",
+            "privacy_rights_portals": "https://policies.google.com/privacy",
+            "wildcard_match": 0
+        },
+        {
+            "id": "10",
+            "platform": "Google Analytics",
+            "category": "Statistics",
+            "data_key": "_gid",
+            "domain": "ll-lenksysteme.at",
+            "description": "Wird verwendet, um Benutzer zu unterscheiden und tägliche Benutzerinteraktionen zu verfolgen.",
+            "retention_period": "24 Stunden",
+            "data_controller": "Google",
+            "privacy_rights_portals": "https://policies.google.com/privacy",
+            "wildcard_match": 0
+        },
+        {
+            "id": "11",
+            "platform": "Google Analytics",
+            "category": "Statistics",
+            "data_key": "_gat",
+            "domain": "ll-lenksysteme.at",
+            "description": "Wird verwendet, um die Anforderungsrate zu drosseln und Datenverkehr zu begrenzen.",
+            "retention_period": "1 Minute",
+            "data_controller": "Google",
+            "privacy_rights_portals": "https://policies.google.com/privacy",
+            "wildcard_match": 0
+        }
+    ];
+
     var cookieCategories = {};
 
     var checkedCategories = {
@@ -173,7 +308,9 @@ window.addEventListener("load", function(){
     }
 
     var websiteCookie = document.cookie.split(";");
-    var websiteCookiePaths = [];
+    var websiteCookiePaths = ["new"];
+
+    var websitePrivacyPage = "https://www.ll-lenksysteme.at/datenschutz";
 
     var justifyCookies = [
         {
@@ -184,13 +321,20 @@ window.addEventListener("load", function(){
 
     websiteCookie.forEach((cookie) => {
         let dataKey = cookie.split("=")[0].trim();
-
-        let justifiedValue = justifyCookies.find(justify => dataKey.includes(justify.dataKey_name))?.dataKey_value || dataKey;
-
-        if (!websiteCookiePaths.includes(justifiedValue)) {
-            websiteCookiePaths.push(justifiedValue);
+    
+        // Check if there's a match in manualCookie
+        let isManualCookiePresent = manualCookie.some(manual => dataKey === manual.data_key);
+        
+        if (!isManualCookiePresent) {
+            let justifiedValue = justifyCookies.find(justify => dataKey.includes(justify.dataKey_name))?.dataKey_value || dataKey;
+            if (!websiteCookiePaths.includes(justifiedValue)) {
+                websiteCookiePaths.push(justifiedValue);
+            }
         }
     });
+    
+    //console.log(websiteCookiePaths);
+    
 
     async function processCookies() {
         
@@ -203,12 +347,43 @@ window.addEventListener("load", function(){
             jsonCookies.forEach((jsonCookie) => {
                 if (websiteCookiePaths.includes(jsonCookie.data_key)) {
                     matchedCookies.push(jsonCookie);
+                   // console.log(jsonCookie)
                 }
+                
             });
 
+            websiteCookiePaths.forEach(function(maincookie){
+                let isMatched = false;
+            
+                matchedCookies.forEach(function(matchedCookie){
+                    if(maincookie === matchedCookie.data_key){
+                        isMatched = true;
+                    }
+                });
+            
+                if(!isMatched){
+                    var generateCookieInfo = {
+                        "id": Math.floor(Math.random() * 5),
+                        "platform": "Unknown",
+                        "category": "Unclassified",
+                        "data_key": maincookie,
+                        "domain": window.location.host,
+                        "description": "This cookie information is unknown",
+                        "retention_period": "",
+                        "data_controller": "Unknown",
+                        "privacy_rights_portals": websitePrivacyPage,
+                        "wildcard_match": 0
+                    };
+                    matchedCookies.push(generateCookieInfo);
+                }
+            });
+            
 
+
+
+            /*
             //modify the something if need
-/*             matchedCookies.forEach(function(cookie, index){
+             matchedCookies.forEach(function(cookie, index){
                 
                 if(cookie.data_key == "_ga"){
                     matchedCookies[index].description = "hello"
@@ -216,10 +391,10 @@ window.addEventListener("load", function(){
 
             }) */
 
-        
+            matchedCookies.push(...manualCookie);
             sendCookies = matchedCookies;
 
-            console.log(matchedCookies);
+            //console.log(matchedCookies)
 
         } catch (error) {
             console.error("Error fetching or processing cookies:", error);
@@ -235,33 +410,34 @@ window.addEventListener("load", function(){
         var tempCategories = {
             Necessary: {
                 totalCookies: 0,
-                description: "Necessary cookies make the website usable by enabling basic functions like page navigation and access to secure areas of the website. Without these cookies, the website cannot function properly.",
+                description: "Notwendige Cookies machen die Website nutzbar, indem sie grundlegende Funktionen wie die Navigation auf der Seite und den Zugang zu sicheren Bereichen der Website ermöglichen. Ohne diese Cookies kann die Website nicht ordnungsgemäß funktionieren.",
                 allProviders: {},
             },
             Preferences: {
                 totalCookies: 0,
-                description: "Preference cookies allow a website to remember information that changes the way the website behaves or looks.",
+                description: "Präferenz-Cookies ermöglichen es einer Website, Informationen zu speichern, die die Art und Weise ändern, wie die Website funktioniert oder aussieht.",
                 allProviders: {},
             },
             Statistics: {
                 totalCookies: 0,
-                description: "Statistic cookies help website owners to understand how visitors interact with websites by collecting and reporting information anonymously.",
+                description: "Statistik-Cookies helfen Website-Besitzern, zu verstehen, wie Besucher mit Websites interagieren, indem sie Informationen anonym sammeln und berichten.",
                 allProviders: {},
             },
             Marketing: {
                 totalCookies: 0,
-                description: "Marketing cookies are used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user.",
+                description: "Marketing-Cookies werden verwendet, um Besucher über Websites hinweg zu verfolgen. Die Absicht ist, Anzeigen anzuzeigen, die für den einzelnen Benutzer relevant und ansprechend sind.",
                 allProviders: {},
             },
             Unclassified: {
                 totalCookies: 0,
-                description: "Unclassified cookies are cookies that we are in the process of classifying, together with the providers of individual cookies.",
+                description: "Unklassifizierte Cookies sind Cookies, die wir gerade klassifizieren, zusammen mit den Anbietern der einzelnen Cookies.",
                 allProviders: {},
             },
         };
+        
 
         sendCookies.forEach(function(sendCookies, index){
-            if(sendCookies.category == "Functional"){
+            if(sendCookies.category == "Functional" || sendCookies.category == "Necessary"){
                 if(!tempCategories.Necessary.allProviders[sendCookies.data_controller]){
                     tempCategories.Necessary.allProviders[sendCookies.data_controller] = [];
                 }
@@ -273,7 +449,7 @@ window.addEventListener("load", function(){
                 }
                 tempCategories.Preferences.allProviders[sendCookies.data_controller].push(sendCookies);
                 tempCategories.Preferences.totalCookies += 1
-            }else if(sendCookies.category == "Analytics"){
+            }else if(sendCookies.category == "Analytics" || sendCookies.category == "Statistics"){
                 if(!tempCategories.Statistics.allProviders[sendCookies.data_controller]){
                     tempCategories.Statistics.allProviders[sendCookies.data_controller] = [];
                 }
@@ -369,8 +545,12 @@ window.addEventListener("load", function(){
     function createCategoryElements(){
         const container = document.querySelector('.cookieSectionWrapper'); // Select the container
 
+        //categoryKey for the english version
+        var categoryText = ["Notwendig", "Präferenzen", "Statistiken", "Marketing", "Nicht klassifiziert"];
+
         // Iterate through each category and build the HTML
-        Object.keys(cookieCategories).forEach((categoryKey) => {
+        Object.keys(cookieCategories).forEach((categoryKey, index) => {
+
             const category = cookieCategories[categoryKey];
             
             // Calculate the total number of cookies dynamically
@@ -384,7 +564,7 @@ window.addEventListener("load", function(){
                     <div class="cookieCategoryTitle">
                         <div class="cookieCategoryTitleLeft">
                             <svg class="arrowDown" width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17.9188 8.17969H11.6888H6.07877C5.11877 8.17969 4.63877 9.33969 5.31877 10.0197L10.4988 15.1997C11.3288 16.0297 12.6788 16.0297 13.5088 15.1997L15.4788 13.2297L18.6888 10.0197C19.3588 9.33969 18.8788 8.17969 17.9188 8.17969Z" fill="#292D32"></path> </g></svg>
-                            <span class="cookieHeadline categoryTitle">${categoryKey}</span>
+                            <span class="cookieHeadline categoryTitle">${categoryText[index]}</span>
                             <span class="cookieHeadline cookietotal">${totalCookies}</span>
                         </div>
                         <div class="cookieCategoryTitleRight">
@@ -396,6 +576,9 @@ window.addEventListener("load", function(){
                     </div>
                     <div class="cookieCategoryDescriptions cookieDescription">${category.description}</div>
                     <div class="allCookiesOuter ${totalCookies === 0 ? '' : 'displayNone'}">`;
+
+
+                    //console.log(categoryKey)
 
             // If there are no cookies in this category, display the message
             if (totalCookies === 0) {
@@ -470,7 +653,7 @@ window.addEventListener("load", function(){
 
         //banner bottom buttons and text
         var bannerButtons = document.querySelectorAll(".bannerBottomSectionWrapper button");
-        var bannerButtonsTexts = ["Accept", "Reject", "Custom", "Save"];
+        
 
         //banner loader
         var bannerLoader = document.querySelector(".bannerLoader")
@@ -534,6 +717,7 @@ window.addEventListener("load", function(){
         /* ---- predefined functions ---- */
         //check when the banner will show to the users
         function checkChoiceShowBanner(){
+
             var choiceMade = localStorage.getItem("choiceMade");
             var showBanner = localStorage.getItem("sb");
 
@@ -576,14 +760,24 @@ window.addEventListener("load", function(){
 
         //push choice made in the local storage
         function choiceMade(){
-            localStorage.setItem("choiceMade", "true")
+            localStorage.setItem("choiceMade", "true");
+        }
+
+        function dataLayer(consent){
+            window.dataLayer = window.dataLayer || []
+            window.dataLayer.push({
+                event: "consent_update",
+                consent: consent,
+                setupBy: "https://www.fiverr.com/analyticsbyte"
+            })
         }
 
         /* ---- replacing the text ---- */
 
         //nav and nav text
         var allTopSection = document.querySelectorAll(".bannerSectionHeadline");
-        var topSectionText = ["Consent", "Details", "About"];
+        var topSectionText = ["Zustimmung", "Einzelheiten", "Über"];
+
 
         //replace the nav text
         allTopSection.forEach(function(element, index) {
@@ -592,13 +786,15 @@ window.addEventListener("load", function(){
 
         //middle section and content
         var allContentSection = document.querySelectorAll(".bannerContent");
-        var firstSectionText = "We use cookies to personalize content and ads, provide social media features, and analyze our traffic. We also share information about your use of our site with our social media, advertising, and analytics partners, who may combine it with other information you’ve provided to them or they’ve collected from your use of their services.";
-        var thirdSectionText = "Cookies are small text files that websites use to improve the user experience. The law states that we can store cookies on your device if they are strictly necessary for the operation of this site. For all other types of cookies, we need your permission. This means that cookies classified as necessary are managed under Article 6(1)(f) of the GDPR. All other cookies, such as those in the preferences and marketing categories, are managed under Article 6(1)(a) of the GDPR. This website uses different types of cookies. Some cookies are placed by third party services that appear on our pages.";
-
+        var firstSectionText = "Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien bereitzustellen und unseren Verkehr zu analysieren. Wir teilen auch Informationen über Ihre Nutzung unserer Website mit unseren Partnern aus sozialen Medien, Werbung und Analytik, die diese Informationen mit anderen Informationen kombinieren können, die Sie ihnen bereitgestellt haben oder die sie aus Ihrer Nutzung ihrer Dienste gesammelt haben.";
+        var thirdSectionText = "Cookies sind kleine Textdateien, die von Websites verwendet werden, um das Benutzererlebnis zu verbessern. Das Gesetz besagt, dass wir Cookies auf Ihrem Gerät speichern können, wenn sie für den Betrieb dieser Website unbedingt erforderlich sind. Für alle anderen Arten von Cookies benötigen wir Ihre Erlaubnis. Das bedeutet, dass Cookies, die als notwendig eingestuft sind, gemäß Artikel 6(1)(f) der DSGVO verwaltet werden. Alle anderen Cookies, wie die in den Kategorien Präferenzen und Marketing, werden gemäß Artikel 6(1)(a) der DSGVO verwaltet. Diese Website verwendet verschiedene Arten von Cookies. Einige Cookies werden von Drittanbieterdiensten gesetzt, die auf unseren Seiten erscheinen.";
+        
 
         //replace the middle section text content
         allContentSection[0].innerHTML = firstSectionText;
         allContentSection[2].innerHTML = thirdSectionText;
+
+        var bannerButtonsTexts = ["Akzeptieren", "Ablehnen", "Anpassen", "Speichern"];
 
         //replace the bottom button text
         bannerButtons.forEach((element, index) => {
@@ -756,6 +952,8 @@ window.addEventListener("load", function(){
 
                     gtag('consent', 'update', consent);
 
+                    dataLayer(consent)
+
                     setTimeout(function(){
                         removeLoaderAndBlur();
                         showHide(false, true);
@@ -782,8 +980,11 @@ window.addEventListener("load", function(){
                     })
 
                     localStorage.setItem("bannerChoice", JSON.stringify(checkedCategories));
-                    gtag('consent', 'update', consent);
 
+
+                    gtag('consent', 'update', consent);
+                    dataLayer(consent);
+                    
                     setTimeout(function(){
                         removeLoaderAndBlur()
                         showHide(false, true);
@@ -810,8 +1011,10 @@ window.addEventListener("load", function(){
                         }
                     })
 
-                    localStorage.setItem("bannerChoice", JSON.stringify(checkedCategories))
+                    localStorage.setItem("bannerChoice", JSON.stringify(checkedCategories));
+
                     gtag('consent', 'update', consent);
+                    dataLayer(consent);
                     choiceMade();
 
                     setTimeout(function(){
