@@ -1,9 +1,3 @@
-const link = document.createElement('link');
-link.rel = 'stylesheet';
-link.href = 'https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@fec525de87a731076bb6c50092fb6a5b0524d41a/ll-lenksysteme.at/mystyle.css';
-document.head.appendChild(link);
-
-
 window.dataLayer = window.dataLayer || [];
 
 function gtag(){
@@ -111,6 +105,14 @@ function checkContinent(userContinent){
     })
 }
 
+function pushDataLayer(consent, event){
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+        event: event,
+        consent: consent,
+        setupBy: "https://www.fiverr.com/analyticsbyte"
+    })
+}
 
 function updateConsent(){
     if(continentMatch == true){
@@ -126,9 +128,11 @@ function updateConsent(){
             consent.unclassified_storage = getBannerChoice.Unclassified;
         
             gtag('consent', 'update', consent);
+            pushDataLayer(consent, "page_view_consent");
     
         }else if(!getBannerChoice){
             gtag('consent', 'update', consent);
+            pushDataLayer(consent, "page_view_consent");
         }
     
         localStorage.setItem("sb", true);
@@ -770,15 +774,6 @@ window.addEventListener("load", function(){
             localStorage.setItem("choiceMade", "true");
         }
 
-        function dataLayer(consent){
-            window.dataLayer = window.dataLayer || []
-            window.dataLayer.push({
-                event: "consent_update",
-                consent: consent,
-                setupBy: "https://www.fiverr.com/analyticsbyte"
-            })
-        }
-
         /* ---- replacing the text ---- */
 
         //nav and nav text
@@ -959,7 +954,7 @@ window.addEventListener("load", function(){
 
                     gtag('consent', 'update', consent);
 
-                    dataLayer(consent)
+                    pushDataLayer(consent, "consent_update")
 
                     setTimeout(function(){
                         removeLoaderAndBlur();
@@ -990,7 +985,7 @@ window.addEventListener("load", function(){
 
 
                     gtag('consent', 'update', consent);
-                    dataLayer(consent);
+                    pushDataLayer(consent, "consent_update");
 
                     setTimeout(function(){
                         removeLoaderAndBlur()
@@ -1021,7 +1016,7 @@ window.addEventListener("load", function(){
                     localStorage.setItem("bannerChoice", JSON.stringify(checkedCategories));
 
                     gtag('consent', 'update', consent);
-                    dataLayer(consent);
+                    pushDataLayer(consent, "consent_update");
                     choiceMade();
 
                     setTimeout(function(){
