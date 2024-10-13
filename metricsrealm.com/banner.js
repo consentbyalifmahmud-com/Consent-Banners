@@ -299,12 +299,12 @@ window.addEventListener("load", function(){
     }
 
     var websiteCookie = document.cookie.split(";");
-    var websiteCookiePaths = ["", ""];
+    var websiteCookiePaths = [];
     
     var justifyCookies = [
         {
-            dataKey_name: "wp-settings-time-1",
-            dataKey_value: "wp-settings-time-*"
+            dataKey_name: "_ga_",
+            dataKey_value: "_ga_*"
         }
     ];
     
@@ -343,7 +343,7 @@ window.addEventListener("load", function(){
                 
             });
 
-            console.log(websiteCookiePaths);
+            //console.log(websiteCookiePaths);
 
 
              websiteCookiePaths.forEach(function(maincookie){
@@ -389,7 +389,7 @@ window.addEventListener("load", function(){
             matchedCookies.push(...manualCookie);
             sendCookies = matchedCookies;
 
-            console.log(matchedCookies)
+            //console.log(matchedCookies)
 
         } catch (error) {
             console.error("Error fetching or processing cookies:", error);
