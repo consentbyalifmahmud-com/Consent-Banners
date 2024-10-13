@@ -1,5 +1,5 @@
 //variables related text and urls
-var websitePrivacyPage = "https://www.ll-lenksysteme.at/datenschutz";
+var websitePrivacyPage = "https://www.metricsrealm.com/privacy-policy/";
 var unknownCookieText = ["Unknown", "This cookie information is unknown"];
 
 //categoryKey for the English version
@@ -305,6 +305,10 @@ window.addEventListener("load", function(){
         {
             dataKey_name: "_ga_",
             dataKey_value: "_ga_*"
+        },
+        {
+            dataKey_name: "wp-settings-time-1",
+            dataKey_value: "wp-settings-time-"
         }
     ];
     
