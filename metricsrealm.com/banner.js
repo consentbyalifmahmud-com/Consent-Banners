@@ -299,12 +299,12 @@ window.addEventListener("load", function(){
     }
 
     var websiteCookie = document.cookie.split(";");
-    var websiteCookiePaths = ["_new", "_fbc"];
+    var websiteCookiePaths = ["", ""];
     
     var justifyCookies = [
         {
-            dataKey_name: "_ga_",
-            dataKey_value: "_ga_*"
+            dataKey_name: "wp-settings-time-1",
+            dataKey_value: "wp-settings-time-*"
         }
     ];
     
