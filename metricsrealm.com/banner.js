@@ -294,7 +294,7 @@ window.addEventListener("load", function(){
     }
 
     async function fetchCookies() {
-        const response = await fetch('https://cdn.jsdelivr.net/gh/alifmahmudashik/marketing@698b63c66ff701f07e067c7124b0d3ef71b5219f/cookie.json');
+        const response = await fetch('https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@7f0cf88062efb8fdd993eff5167c80f73dc72444/metricsrealm.com/cookie.json');
         return response.json();
     }
 
@@ -393,7 +393,7 @@ window.addEventListener("load", function(){
             matchedCookies.push(...manualCookie);
             sendCookies = matchedCookies;
 
-            //console.log(matchedCookies)
+            console.log(matchedCookies)
 
         } catch (error) {
             console.error("Error fetching or processing cookies:", error);
