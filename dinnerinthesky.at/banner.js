@@ -1,3 +1,11 @@
+var linkElement = document.createElement("link");
+linkElement.rel = "stylesheet";
+linkElement.type = "text/css";
+linkElement.href = "https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@8230c7624c71842cf361ce732fd38b2d975d2b35/dinnerinthesky.at/mystyle.css";
+
+document.head.appendChild(linkElement);
+
+
 // Variablen zu Texten und URLs
 var websitePrivacyPage = "https://www.metricsrealm.com/privacy-policy/";
 var unknownCookieText = ["Unbekannt", "Diese Cookie-Informationen sind unbekannt"];
