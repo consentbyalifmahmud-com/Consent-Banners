@@ -12,3 +12,7 @@ Assign a value (in milliseconds) to `bannerShowingDelayed` to specify the delay.
 
 ```javascript
 var bannerShowingDelayed = 3000; // Delays the banner display by 3 seconds
+
+- **Note:** 3000 milliseconds equals 3 seconds.
+- **Immediate Display:** Set `bannerShowingDelayed = 0;` for the banner to appear instantly when the page loads.
+- You can adjust this value based on how long you want users to wait before the banner appears.
