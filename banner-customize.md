@@ -22,7 +22,7 @@ var bannerShowingDelayed = 3000; // Delays the banner display by 3 seconds
 You can adjust this value based on how long you want users to wait before the banner appears.
 
 
-# Logo Customization
+## Logo Customization
 
 ## Adding or Removing the Logo
 
