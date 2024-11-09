@@ -10,9 +10,8 @@ The variable `bannerShowingDelayed` controls the delay time (in milliseconds) be
 **How to Set the Delay:**  
 Assign a value (in milliseconds) to `bannerShowingDelayed` to specify the delay. For example:
 
-```javascript
+```
 var bannerShowingDelayed = 3000; // Delays the banner display by 3 seconds
-
 ```
 
 **Note:** 3000 milliseconds equals 3 seconds.
