@@ -1,201 +1,140 @@
 # Banner and Cookie Consent Customization Guide
 
 **Description:**  
-This guide provides a step-by-step overview of customizing a website banner and cookie consent preferences. It covers essential settings, including display delay, logo customization, dark mode, navigation text, and cookie consent options, allowing you to tailor the user experience according to your website's requirements.
+This guide explains how to set up a customizable banner for cookie consent. You’ll learn how to control the display delay, add a logo, enable dark mode, and manage consent actions.
 
 ---
 
 ### Banner Display Delay
 
-The `bannerShowingDelayed` variable controls the delay time (in milliseconds) before the banner appears on the page. This feature allows users to engage with the page content before the banner is shown.
+Use `bannerShowingDelayed` to set how long the banner waits before appearing.
 
-#### How to Set the Delay:
-1. **Define the Delay Time:** Assign a value in milliseconds to `bannerShowingDelayed`. For example, to set a 3-second delay:
-
-   ```javascript
-   var bannerShowingDelayed = 3000; // Banner appears after 3 seconds
-   ```
-
-2. **Immediate Display:** Setting `bannerShowingDelayed` to `0` means the banner will appear as soon as the page loads:
+1. **Set Delay Time:** Enter a delay time in milliseconds. For example, to set a 3-second delay:
 
    ```javascript
-   var bannerShowingDelayed = 0; // No delay, banner appears immediately
+   var bannerShowingDelayed = 3000; // Banner shows after 3 seconds
    ```
 
-3. **Customize the Delay:** Adjust this value as needed based on how long you'd like users to wait before seeing the banner.
+2. **Show Banner Immediately:** Set to `0` to show the banner right away:
+
+   ```javascript
+   var bannerShowingDelayed = 0; // No delay, banner shows immediately
+   ```
 
 ---
 
 ### Logo Customization
 
-You can customize the logo displayed on the banner by setting the `websiteLogo` and `logoWidth` variables.
+You can add, remove, or resize the logo on the banner.
 
-#### Adding a Logo:
-1. **Specify the Logo URL:** Set the `websiteLogo` variable to the URL of the logo image you want to display on the banner. Example:
+1. **Add a Logo:** Set `websiteLogo` to the logo’s URL:
 
    ```javascript
-   var websiteLogo = "https://example.com/path-to-your-logo.svg";
+   var websiteLogo = "https://example.com/logo.svg";
    ```
 
-2. **Removing the Logo:** If you don’t want a logo displayed, set `websiteLogo` to an empty string:
+2. **Remove the Logo:** Set `websiteLogo` to an empty string to hide the logo:
 
    ```javascript
    var websiteLogo = "";
    ```
 
-   This will prevent any logo from appearing on the banner.
-
-#### Adjusting the Logo Size:
-1. **Define the Logo Width:** Use the `logoWidth` variable to set the logo’s width in pixels. For example, to set the logo width to 80 pixels:
+3. **Set Logo Size:** Change `logoWidth` to control the logo’s size in pixels:
 
    ```javascript
    var logoWidth = "80px"; // Logo width set to 80 pixels
    ```
 
-2. **Customize as Needed:** Modify this value based on the desired size for the logo on your banner.
-
 ---
 
 ### Dark Mode Customization
 
-You can enable dark mode functionality for the banner and set it as the default mode if preferred. The following variables control dark mode options:
+Enable dark mode, set a default mode, and let users toggle between light and dark modes.
 
-#### Enabling Dark Mode:
-1. **Activate Dark Mode Option:** To make dark mode available, set `darkModeEnable` to `true`. Setting it to `false` will disable dark mode entirely.
-
-   ```javascript
-   var darkModeEnable = true; // Enables dark mode functionality
-   ```
-
-#### Setting the Default Mode:
-1. **Define the Default Mode:** Use the `darkModeDefault` variable to set the banner’s default mode to either "light" or "dark." This setting will apply when users first visit.
+1. **Enable Dark Mode:** Set `darkModeEnable` to `true` to make dark mode available:
 
    ```javascript
-   var darkModeDefault = localStorage.getItem("viewMode") ? localStorage.getItem("viewMode") : "dark";
+   var darkModeEnable = true;
    ```
 
-   - In this example, if no preference is stored in `localStorage`, the default mode is set to dark.
-   - To set the default to light, replace `"dark"` with `"light"`.
-
-#### Allowing Users to Toggle Mode:
-1. **Show Toggle Icon:** To give users control over light and dark modes, set `showIconOfModes` to `true`, displaying a toggle icon on the banner. Set to `false` to hide the toggle icon.
+2. **Set Default Mode:** Use `darkModeDefault` to set the default mode to either "light" or "dark" when users first visit. This example checks if there’s a saved mode in `localStorage`. If not, it defaults to "light":
 
    ```javascript
-   var showIconOfModes = true; // Enables light/dark mode toggle icon
+   var darkModeDefault = localStorage.getItem("viewMode") ? localStorage.getItem("viewMode") : "light";
    ```
 
-These settings allow you to customize dark mode behavior to suit user preferences on your site.
+   - If a previous choice exists in `localStorage`, it loads that. If no saved mode is found, it uses "light."
+
+3. **Show Toggle for Light/Dark Mode:** Set `showIconOfModes` to `true` to show a toggle icon for users to switch between modes:
+
+   ```javascript
+   var showIconOfModes = true;
+   ```
 
 ---
 
 ### Default Consent and Main Banner Consent Actions
 
-These variables manage the initial consent status and define actions when users interact with the main banner's consent options.
+These variables manage the default consent setting and the actions when users click Accept, Customize, or Decline on the main banner.
 
-#### Default Consent Setting
-1. **Set Initial Consent Status:** The `defaultConsent` variable determines if consent is granted by default or not. 
-
-   - Set `defaultConsent` to `true` if you want consent to be granted initially.
-   - Set `defaultConsent` to `false` if consent should be denied until the user takes action.
+1. **Default Consent Setting:** Set `defaultConsent` to `true` if you want consent to be granted by default, or `false` if not:
 
    ```javascript
-   var defaultConsent = false; // Consent denied by default
+   var defaultConsent = false; // Default is consent denied
    ```
 
-#### Main Banner Consent Actions
-The following variables control what happens when users click "Accept," "Customize," or "Decline" on the main banner:
-
-1. **Accept Button Action:**  
-   - Set `onClickAccept` to `"granted"` to mark consent as granted when users click "Accept."
-   - Set it to `"denied"` if clicking "Accept" should deny consent (less common).
+2. **Accept Button Action:** Use `onClickAccept` to set the action for when users click "Accept" on the banner:
 
    ```javascript
-   var onClickAccept = "granted"; // Consent granted on clicking Accept
+   var onClickAccept = "granted"; // Consent is granted on Accept
    ```
 
-2. **Customize Button Action:**  
-   - The `onClickCustom` variable specifies the outcome when users click "Customize."
-   - Options include:
-     - `"granted"`: All consent options are granted.
-     - `"denied"`: All consent options are denied.
-     - `"normal"`: Users can choose specific options without automatically granting or denying everything.
+3. **Customize Button Action:** Use `onClickCustom` to define the action for when users click "Customize":
 
    ```javascript
-   var onClickCustom = "normal"; // Allows users to customize individual consent options
+   var onClickCustom = "normal"; // Users can select options individually
    ```
 
-3. **Decline Button Action:**  
-   - Set `onClickDeclined` to `"denied"` to mark consent as denied when users click "Decline."
-   - Set it to `"granted"` if clicking "Decline" should grant consent (not typically used).
+   - `"granted"`: All options are accepted.
+   - `"denied"`: All options are denied.
+   - `"normal"`: Lets users pick specific options.
+
+4. **Decline Button Action:** Use `onClickDeclined` to define the action when users click "Decline":
 
    ```javascript
-   var onClickDeclined = "denied"; // Consent denied on clicking Decline
+   var onClickDeclined = "denied"; // Consent is denied on Decline
    ```
-
-   **Note on Alternative Options:**  
-   - For each of these actions, setting them to `"granted"` will mean that the action automatically grants consent for all cookies and tracking.
-   - Setting them to `"denied"` (e.g., for the `onClickAccept` action) is less common, as "Accept" would typically indicate that consent is given. Choose `"denied"` only if you want to override this default behavior for unique use cases.
-
-These variables allow you to configure the banner’s response based on user actions, providing flexibility in how consent is managed on your site.
 
 ---
 
 ### Second Banner and Consent Reminder Settings
 
-The second banner feature provides a follow-up opportunity for users who initially declined consent on the main banner. This configuration is useful for sites that want to give users a gentle reminder or prompt to reconsider their choice. The second banner options control when it appears, the actions tied to it, and the effects of each choice.
+The second banner serves as a reminder if users decline consent on the first banner. You can control when it shows and the actions if they accept or decline again.
 
-#### Enabling the Second Banner
-
-1. **Display Control for Second Banner:**  
-   - Set `secondBannerEnable` to `true` if you want a second banner to appear when a user declines consent on the main banner.
-   - Set it to `false` if you don’t want the secondary prompt.
+1. **Enable Second Banner:** Set `secondBannerEnable` to `true` to display the second banner:
 
    ```javascript
-   var secondBannerEnable = true; // Enables the second banner as a reminder
+   var secondBannerEnable = true;
    ```
 
-#### Second Banner Consent Actions
-
-The actions tied to the second banner determine what happens when users choose to accept or decline consent on the reminder. These actions are defined by the following variables:
-
-1. **Accept Button Action on Second Banner:**
-   - `onClickAcceptSecond` specifies the action to take when users click "Accept" on the second banner.
-   - Setting `onClickAcceptSecond` to `"granted"` will record user consent as accepted, enabling cookies and other preferences.
-   - Setting it to `"denied"` (though not commonly used) would reject consent, even if the user clicked "Accept" on the second banner.
+2. **Accept Button Action on Second Banner:** Use `onClickAcceptSecond` to set what happens if users click "Accept" on the second banner:
 
    ```javascript
-   var onClickAcceptSecond = "granted"; // Grants consent on second banner accept
+   var onClickAcceptSecond = "granted"; // Consent granted on Accept
    ```
 
-   **Note:** Typically, you would set `onClickAcceptSecond` to `"granted"` so that users who decide to accept the consent reminder have their preferences saved as accepted.
-
-2. **Decline Button Action on Second Banner:**
-   - `onClickDeclinedSecond` defines the action to take if a user clicks "Decline" on the second banner.
-   - Setting it to `"denied"` will reject consent, as the user has confirmed they do not wish to allow tracking.
-   - If you set it to `"granted"`, clicking "Decline" on the second banner would still save consent as accepted—this is usually not recommended, as it may go against user expectations.
+3. **Decline Button Action on Second Banner:** Use `onClickDeclinedSecond` to set the action for when users click "Decline" on the second banner:
 
    ```javascript
-   var onClickDeclinedSecond = "denied"; // Denies consent on second banner decline
+   var onClickDeclinedSecond = "denied"; // Consent denied on Decline
    ```
 
-   **Example Scenarios:**
-   - If `onClickDeclinedSecond` is set to `"granted"`, users who decline on the second banner will still have their consent marked as accepted, which may lead to confusion. For a user-centric approach, it’s best to keep this setting as `"denied"`.
-
-#### Configuring the Second Banner Display Delay
-
-The `secondBannerShowingTime` variable sets the timing for the second banner’s appearance, measured in seconds. This delay is useful for letting users engage with the page before the reminder prompt appears.
-
-1. **Set the Delay:**  
-   - Define how many seconds you want to wait before showing the second banner.
-   - For example, to show the second banner 10 seconds after the user initially declines consent:
+4. **Second Banner Delay:** Set `secondBannerShowingTime` to control the delay (in seconds) before the second banner appears:
 
    ```javascript
-   var secondBannerShowingTime = 10; // Second banner appears after 10 seconds
+   var secondBannerShowingTime = 10; // Shows after 10 seconds
    ```
-
-   **Note:** Adjusting this timing allows you to balance between user engagement and providing a timely reminder.
 
 ---
 
-These settings allow for a user-friendly consent reminder if the initial consent is declined,
-helping to ensure users are informed while respecting their preferences.
+These settings let you control how the banner and consent work for your users.
