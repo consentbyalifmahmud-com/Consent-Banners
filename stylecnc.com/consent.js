@@ -1,7 +1,7 @@
 var link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
-link.href = "https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@7bca25d3129a63d203cfa58a25ca48aeab3518cd/stylecnc.com/banner-style.css";
+link.href = "https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@6dd282c91db253a15e6ef4be026dca04ab31fd23/stylecnc.com/banner-style.css";
 
 document.head.appendChild(link);
 
@@ -216,7 +216,7 @@ function restEvents(){
 
         var getChoice = JSON.parse(localStorage.getItem("bannerChoice")) || {};
     
-        var inputs = document.querySelectorAll(".switch input");
+        var inputs = document.querySelectorAll(".consentBannerSwitch input");
     
         if (inputs[0]) {
             inputs[0].checked = true;
@@ -296,7 +296,7 @@ function restEvents(){
 
     closeBanner.style.display = control.closeBtn ? "flex" : "none";
     
-    var getSwitch = document.querySelectorAll(".switch");
+    var getSwitch = document.querySelectorAll(".consentBannerSwitch");
 
     if (getSwitch.length !== 0) {
         getSwitch[0].style.opacity = "0.5";
@@ -402,7 +402,7 @@ function restEvents(){
     bannerButton.forEach(function(element, index){
         element.onclick = function(button){
 
-            var allInputs = document.querySelectorAll(".switch input")
+            var allInputs = document.querySelectorAll(".consentBannerSwitch input")
     
             if(index == 0){
 
@@ -591,7 +591,7 @@ function createElement() {
                     <span class="cookieTotal">${totalCookiesInCategory}</span>
                 </div>
                 <div class="categoryToggle">
-                    <label class="switch">
+                    <label class="consentBannerSwitch">
                         <input type="checkbox" checked>
                         <span class="consentSlider round"></span>
                     </label>
