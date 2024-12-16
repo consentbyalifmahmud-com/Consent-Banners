@@ -6,8 +6,11 @@ function loadCSS(url) {
     document.head.appendChild(link);
 }
 
-// Load the CSS file from the specified URL
-loadCSS('https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@4210f7b2e7843038931946b644eb8966d71b28e1/stylecnc.com/banner-style.css');
+loadCSS('https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@db933a95f46ae2923ab94ebeb3a401020ebe9391/stylecnc.com/banner-style.css');
+
+function log(data) {
+    console.log(data);
+}
 
 function dataLayerPush(event){
     window.dataLayer = window.dataLayer || [];
