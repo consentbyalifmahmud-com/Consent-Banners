@@ -76,7 +76,7 @@
     row-gap: 10px;
     font-family: var(--bannerFont);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    z-index: 99999;
+    z-index: 9999;
     background-color: var(--whiteColor);
     animation: opacity 0.5s;
 }
@@ -417,7 +417,7 @@ input:checked + .consentSlider:before {
     border-radius: 50%;
     cursor: pointer;
     display: none;
-    z-index: 99999;
+    z-index: 9999;
     background: var(--whiteColor);
     left:10px;
     top:50%; 
