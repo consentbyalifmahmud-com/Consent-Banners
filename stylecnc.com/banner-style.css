@@ -301,7 +301,7 @@
 }
 
 .bannerButtons button{
-    width: 100%;
+    flex: 1;
     padding: 15px;
     outline: none;
     font-family: var(--bannerFont);
