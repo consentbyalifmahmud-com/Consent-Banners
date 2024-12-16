@@ -152,8 +152,8 @@ async function getCookieData() {
         var checkChoice = JSON.parse(localStorage.getItem("bannerChoice"));
 
         if(!checkChoice){
-            deleteAllCookies();
-            blockCookies();
+            //deleteAllCookies();
+            //blockCookies();
         }
 
 
@@ -406,7 +406,7 @@ function restEvents(){
     
             if(index == 0){
 
-                allowCookies()
+                //allowCookies()
 
                 Object.keys(consent).forEach(function(c){
                     consent[c] = "granted"
@@ -433,7 +433,7 @@ function restEvents(){
 
             }else if(index == 1){
 
-                allowCookies()
+                //allowCookies()
 
                 Object.keys(consent).forEach(function(c, index){
                     if(index != 7){
@@ -486,7 +486,7 @@ function restEvents(){
     
                 }else if(element.id == "save"){
 
-                    allowCookies()
+                   // allowCookies()
 
                     allInputs.forEach(function(input, index){
 
