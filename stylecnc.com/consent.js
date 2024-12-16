@@ -1,1 +1,487 @@
-function log(e){console.log(e)}function dataLayerPush(e){window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:e})}var contentInfo={logo:"https://www.stylecnc.com/assets/img/logo.svg",navText:["Consent","Details","About"],section1:"We use cookies to enhance your experience, as well as for analytics and measurement purposes. By continuing to use our website and services, you agree to our use of cookies as outlined in our Cookie Policy and Privacy Policy.",section3:"Cookies are small text files that are used by websites to improve the user experience. The law states that we can store cookies on your device if they are strictly necessary for the operation of this website. For all other types of cookies, we need your permission. This means that cookies classified as necessary are managed according to Article 6(1)(f) of the GDPR. All other cookies, such as those in the Preferences and Marketing categories, are managed according to Article 6(1)(a) of the GDPR. This website uses different types of cookies. Some cookies are set by third-party services that appear on our pages.",buttons:["Accept","Reject","Custom","Save"],categoryText:["Functional","Preference","Analytics","Marketing","Unknown"],categoryDescription:["Necessary cookies make the website usable by enabling basic functions like page navigation and access to secure areas of the website. Without these cookies, the website cannot function properly.","Preference cookies enable the website to remember information that changes the way the website behaves or looks, like your preferred language or the region that you are in.","Analytics cookies help website owners understand how visitors interact with websites by collecting and reporting information anonymously.","Marketing cookies are used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user and thereby more valuable for publishers and third party advertisers.","Unclassified cookies are cookies that we are currently classifying together with the providers of individual cookies."],noCookieText:"No cookie to display"},control={logo:!0,closeBtn:!1,consentDefault:!1,activeNavAndContent:0,bannerShowingDelay:0,clickLoaderDelay:300},cookieInfo={functional:{},prefrence:{},analytics:{},marketing:{},unknown:{}};function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[];let originalCookieDescriptor=Object.getOwnPropertyDescriptor(Document.prototype,"cookie")||Object.getOwnPropertyDescriptor(HTMLDocument.prototype,"cookie");function blockCookies(){Object.defineProperty(document,"cookie",{get:function(){return""},set:function(){console.warn("Cookies are disabled. Setting cookies is blocked.")},configurable:!0})}function allowCookies(){originalCookieDescriptor&&Object.defineProperty(document,"cookie",originalCookieDescriptor)}function deleteAllCookies(){const e=window.location.hostname.split(".");document.cookie.split(";").forEach((function(n){const o=n.split("=")[0].trim();for(let n=0;n<e.length;n++){const t=e.slice(n).join(".");document.cookie=`${o}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${t}`}document.cookie=`${o}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`}))}var consent={ad_storage:control.consentDefault?"granted":"denied",ad_user_data:control.consentDefault?"granted":"denied",ad_personalization:control.consentDefault?"granted":"denied",analytics_storage:control.consentDefault?"granted":"denied",functionality_storage:control.consentDefault?"granted":"denied",personalization_storage:control.consentDefault?"granted":"denied",unclassified_storage:control.consentDefault?"granted":"denied",security_storage:"granted"};function onVisit(){var e=JSON.parse(localStorage.getItem("bannerChoice"));e?(gtag("consent","update",e),dataLayerPush("consent_page_view")):e||(gtag("consent","default",consent),dataLayerPush("consent_page_view"))}onVisit();var getWebCookies=document.cookie.split(";").map((function(e){return e.split("=")[0].trim()}));async function getCookieData(){try{const e=await fetch("https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@7f0cf88062efb8fdd993eff5167c80f73dc72444/metricsrealm.com/cookie.json");(await e.json()).forEach((function(e){getWebCookies.includes(e.data_key)&&Object.keys(cookieInfo).forEach((function(n){e.category.toLowerCase()==n&&(cookieInfo[n][e.data_controller]||(cookieInfo[n][e.data_controller]=[]),cookieInfo[n][e.data_controller].push(e))}))})),JSON.parse(localStorage.getItem("bannerChoice"))||(deleteAllCookies(),blockCookies()),showBanner()}catch(e){console.error(e.message)}}function replaceAndControll(){var e=document.querySelector(".bannerLogo"),n=document.querySelector(".closeBanner");control.logo&&(e.innerHTML=`<img src="${contentInfo.logo}" alt="">`),n.style.display=control.closeBtn?"flex":"none",document.querySelectorAll(".bannerNavWrapper .nav").forEach((function(e,n){e.innerHTML=contentInfo.navText[n]}));var o=document.querySelectorAll(".bannerContentWrapper .content");o[0].innerHTML=contentInfo.section1,o[2].innerHTML=contentInfo.section3,document.querySelectorAll(".bannerButtons button").forEach((function(e,n){e.innerHTML=contentInfo.buttons[n]})),createElement(),restEvents()}function restEvents(){function e(){var e=JSON.parse(localStorage.getItem("bannerChoice"))||{},n=document.querySelectorAll(".switch input");n[0]&&(n[0].checked=!0),n[1]&&(n[1].checked="granted"===e.functionality_storage),n[2]&&(n[2].checked="granted"===e.analytics_storage),n[3]&&(n[3].checked="granted"===e.ad_personalization),n[4]&&(n[4].checked="granted"===e.unclassified_storage),n[5]&&(n[5].checked="granted"===e.security_storage)}function n(e,n){document.querySelector(".consentBannerWrapper").style.display=e?"flex":"none",document.querySelector(".miniIcon").style.display=n?"flex":"none"}JSON.parse(localStorage.getItem("bannerChoice"))?n(!1,!0):setTimeout((function(){n(!0)}),control.bannerShowingDelay);var o=document.querySelector(".closeBanner"),t=document.querySelectorAll(".bannerNavWrapper .nav"),a=document.querySelectorAll(".bannerContentWrapper .content"),r=document.querySelectorAll(".bannerCategory"),i=document.querySelectorAll(".allProviderWrapper"),c=document.querySelectorAll(".cookiesProviderWrapper"),s=document.querySelectorAll(".arrowCategory"),l=document.querySelectorAll(".cookieInfoHeader"),d=document.querySelectorAll(".allCookieInfoWrapper"),u=document.querySelectorAll(".arrowCookie"),g=document.querySelectorAll(".bannerButtons button"),p=control.activeNavAndContent,v=document.querySelector(".miniIcon");o.style.display=control.closeBtn?"flex":"none";var f=document.querySelectorAll(".switch");0!==f.length&&(f[0].style.opacity="0.5",f[0].querySelector("input").checked=!0,f[0].querySelector("input").disabled=!0),t[p].classList.add("navActiveBorder"),a[p].classList.add("activeFlex"),o.onclick=function(){n(!1,!0)},v.onclick=function(){n(!0,!1)},t.forEach((function(n,o){n.onclick=function(){t.forEach((function(e){e.classList.remove("navActiveBorder")})),t[o].classList.add("navActiveBorder"),a.forEach((function(e){e.classList.remove("activeFlex"),e.classList.add("hideElement")})),a[o].classList.remove("hideElement"),a[o].classList.add("activeFlex"),1==o?(g[2].innerText=contentInfo.buttons[3],document.querySelector(".bannerButtons").classList.add("btnShadow"),document.querySelectorAll(".bannerButtons button")[2].id="save",e()):(g[2].innerText=contentInfo.buttons[2],document.querySelector(".bannerButtons").classList.remove("btnShadow"),document.querySelectorAll(".bannerButtons button")[2].id="custom")}})),r.forEach((function(e,n){e.onclick=function(e){var o=i[n].classList.contains("activeFlex");i.forEach((function(e){e.classList.remove("activeFlex")})),i[n].classList.add("activeFlex"),s[n].classList.add("rotate"),o&&(i[n].classList.remove("activeFlex"),s[n].classList.remove("rotate"))}})),c.forEach((function(e){e.onclick=function(e){e.stopPropagation()}})),l.forEach((function(e,n){e.onclick=function(){var e=d[n].classList.contains("activeFlex");d.forEach((function(e){e.classList.remove("activeFlex")})),d[n].classList.add("activeFlex"),u[n].classList.add("rotate"),e&&(d[n].classList.remove("activeFlex"),u[n].classList.remove("rotate"))}})),g.forEach((function(o,r){o.onclick=function(i){var c=document.querySelectorAll(".switch input");0==r?(allowCookies(),Object.keys(consent).forEach((function(e){consent[e]="granted"})),gtag("consent","update",consent),dataLayerPush("consent_update"),localStorage.setItem("bannerChoice",JSON.stringify(consent)),c.forEach((function(e){e.checked=!0})),setTimeout((function(){n(!1,!0)}),control.clickLoaderDelay)):1==r?(allowCookies(),Object.keys(consent).forEach((function(e,n){7!=n&&(consent[e]="denied")})),gtag("consent","update",consent),dataLayerPush("consent_update"),localStorage.setItem("bannerChoice",JSON.stringify(consent)),c.forEach((function(e,n){0!=n&&(e.checked=!1)})),setTimeout((function(){n(!1,!0)}),control.clickLoaderDelay)):2==r&&("custom"==o.id?(t.forEach((function(e){e.classList.remove("navActiveBorder")})),t[1].classList.add("navActiveBorder"),a.forEach((function(e){e.classList.remove("activeFlex"),e.classList.add("hideElement")})),a[1].classList.remove("hideElement"),a[1].classList.add("activeFlex"),g[2].innerText=contentInfo.buttons[3],o.id="save",document.querySelector(".bannerButtons").classList.add("btnShadow"),e()):"save"==o.id&&(allowCookies(),c.forEach((function(e,n){0==n?(consent.security_storage=e.checked?"granted":"denied",consent.functionality_storage=e.checked?"granted":"denied"):1==n?consent.personalization_storage=e.checked?"granted":"denied":2==n?consent.analytics_storage=e.checked?"granted":"denied":3==n?(consent.ad_user_data=e.checked?"granted":"denied",consent.ad_personalization=e.checked?"granted":"denied",consent.ad_storage=e.checked?"granted":"denied"):4==n&&(consent.unclassified_storage=e.checked?"granted":"denied")})),localStorage.setItem("bannerChoice",JSON.stringify(consent)),gtag("consent","update",consent),dataLayerPush("consent_update"),n(!1,!0)))}}))}function createMainElements(){document.body.innerHTML+='\n    <div class="consentBannerWrapper">\n\n    <div class="bannerHeader">\n        <div class="bannerLogo"></div>\n        <div class="closeBanner">\n            <svg viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>cross-circle</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-568.000000, -1087.000000)" fill="#000000"> <path d="M584,1117 C576.268,1117 570,1110.73 570,1103 C570,1095.27 576.268,1089 584,1089 C591.732,1089 598,1095.27 598,1103 C598,1110.73 591.732,1117 584,1117 L584,1117 Z M584,1087 C575.163,1087 568,1094.16 568,1103 C568,1111.84 575.163,1119 584,1119 C592.837,1119 600,1111.84 600,1103 C600,1094.16 592.837,1087 584,1087 L584,1087 Z M589.717,1097.28 C589.323,1096.89 588.686,1096.89 588.292,1097.28 L583.994,1101.58 L579.758,1097.34 C579.367,1096.95 578.733,1096.95 578.344,1097.34 C577.953,1097.73 577.953,1098.37 578.344,1098.76 L582.58,1102.99 L578.314,1107.26 C577.921,1107.65 577.921,1108.29 578.314,1108.69 C578.708,1109.08 579.346,1109.08 579.74,1108.69 L584.006,1104.42 L588.242,1108.66 C588.633,1109.05 589.267,1109.05 589.657,1108.66 C590.048,1108.27 590.048,1107.63 589.657,1107.24 L585.42,1103.01 L589.717,1098.71 C590.11,1098.31 590.11,1097.68 589.717,1097.28 L589.717,1097.28 Z" id="cross-circle" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>\n        </div>\n    </div>\n\n    <div class="bannerNavWrapper bannerHeadline">\n        <div class="nav"></div>\n        <div class="nav"></div>\n        <div class="nav"></div>\n    </div>\n\n    <div class="bannerContentWrapper bannerDescription">\n        <div class="content"></div>\n        <div class="content cookieContentWrapper">\n            \n        </div>\n        <div class="content"></div>\n    </div>\n\n\n    <div class="bannerButtons">\n        <button class="btnActive"></button>\n        <button></button>\n        <button id="custom"></button>\n    </div>\n\n    <div class="divLoader">\n        \n    </div>\n</div>\n\n<div class="miniIcon">\n    <svg width="50px" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.598 11.064a1.006 1.006 0 0 0-.854-.172A2.938 2.938 0 0 1 20 11c-1.654 0-3-1.346-3.003-2.938.005-.034.016-.134.017-.168a.998.998 0 0 0-1.254-1.006A3.002 3.002 0 0 1 15 7c-1.654 0-3-1.346-3-3 0-.217.031-.444.099-.716a1 1 0 0 0-1.067-1.236A9.956 9.956 0 0 0 2 12c0 5.514 4.486 10 10 10s10-4.486 10-10c0-.049-.003-.097-.007-.16a1.004 1.004 0 0 0-.395-.776zM8.5 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-2 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm2.5-6.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm3.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path></g></svg>\n</div>\n\n    '}function createElement(){var e=document.querySelector(".cookieContentWrapper"),n="";Object.keys(cookieInfo).forEach((function(e,o){var t=contentInfo.categoryText[o],a=contentInfo.categoryDescription[o],r=cookieInfo[e],i=Object.keys(r).reduce(((e,n)=>e+r[n].length),0);n+=`\n        <div class="bannerCategory">\n            <div class="categoryHeaderWrapper">\n                <div class="categoryName bannerHeadline">\n                    <svg class="arrow arrowCategory" width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17.9188 8.17969H11.6888H6.07877C5.11877 8.17969 4.63877 9.33969 5.31877 10.0197L10.4988 15.1997C11.3288 16.0297 12.6788 16.0297 13.5088 15.1997L15.4788 13.2297L18.6888 10.0197C19.3588 9.33969 18.8788 8.17969 17.9188 8.17969Z" fill="#292D32"></path> </g></svg>\n                    <span class="categoryTitle">${t}</span>\n                    <span class="cookieTotal">${i}</span>\n                </div>\n                <div class="categoryToggle">\n                    <label class="switch">\n                        <input type="checkbox" checked>\n                        <span class="slider round"></span>\n                    </label>\n                </div>\n            </div>\n\n            <div class="categoryDescription bannerDescription">\n                ${a}\n            </div>\n        `,0===i?n+=`\n            <div class="allProviderWrapper">\n                <div class="noCookie">${contentInfo.noCookieText}</div>\n            </div>\n            `:(n+='<div class="allProviderWrapper">',Object.keys(r).forEach((function(e){var o=r[e],t=o.length;n+=`\n                    <div class="cookiesProviderWrapper">\n                        <div class="cookieInfoHeader bannerHeadline">\n                            <div class="providerName">\n                                ${e}\n                                <span class="cookieTotal">${t}</span>\n                            </div>\n                            <svg class="arrow arrowCookie" width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17.9188 8.17969H11.6888H6.07877C5.11877 8.17969 4.63877 9.33969 5.31877 10.0197L10.4988 15.1997C11.3288 16.0297 12.6788 16.0297 13.5088 15.1997L15.4788 13.2297L18.6888 10.0197C19.3588 9.33969 18.8788 8.17969 17.9188 8.17969Z" fill="#292D32"></path> </g></svg>\n                        </div>\n\n                        <div class="learnMoreWrapper bannerDescription">\n                            <a href="${o[0].privacy_rights_portals}" target="_blank">Learn more about this provider</a>\n                        </div>\n\n                        <div class="allCookieInfoWrapper">\n                `,o.forEach((function(e){n+=`\n                        <div class="cookieInfoWrapper bannerDescription">\n                            <div class="cookiePath">${e.data_key}</div>\n                            <div class="cookieDetails">${e.description}</div>\n                            <div class="cookieBorder"></div>\n                            <div class="cookieOtherInfo">\n                                <span>Retention: ${e.retention_period}</span>\n                                <span>Domain: ${e.domain||window.location.host}</span>\n                                <span>Controller: ${e.data_controller}</span>\n                            </div>\n                        </div>\n                    `})),n+="</div>",n+="</div>"})),n+="</div>"),n+="</div>"})),e.innerHTML+=n}function showBanner(){window.addEventListener("load",(function(){createMainElements(),replaceAndControll()}))}getCookieData();
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
+:root{
+
+    /* default */
+    --bannerBorderColor: #ced6e0;
+    --whiteColor: #fff;
+    --bannerFont: "Outfit", sans-serif;
+    --cookieInfoBg: #f1f2f6;
+
+    /* Headline */
+    --healineFontSize: 15px;
+    --headlineColor: black;
+    --headlineLineHeight: 24px;
+    --headlineWeight: bold;
+
+    /* Description */
+    --descriptionFontSize: 14px;
+    --desciptionColor: #444;
+    --descriptionLineHeight: 24px;
+    --descriptionWeight: 400;
+
+    /* button */
+    --buttonFontSize: 15px;
+    --buttonLineHeight: 24px;
+    --buttonWeight: bold;
+    --buttonRadius: 10px;
+
+    /* normal button */
+    --buttonBackground: var(--whiteColor);
+    --buttonColor: #444;
+    --normalButtonHoverBackground: var(--secondAccent);
+    --normalButtonHoverColor: var(--whiteColor);
+
+    /* active button */
+    --activeButtonBackground: var(--accentColor);
+    --activeButtonColor: var(--whiteColor);
+    --activeButtonHoverBackgroud: var(--secondAccent);
+    --activeButtonHoverColor: black;
+
+    /* accent */
+    --accentColor: #001344;
+    --secondAccent: #db3700;
+}
+
+.activeFlex{
+    display: flex !important;
+}
+
+.hideElement{
+    display: none !important;
+}
+
+.consentBannerWrapper,
+.consentBannerWrapper * {
+    margin: 0;
+    padding: 0;
+}
+
+.consentBannerWrapper{
+    border: 1px solid var(--bannerBorderColor);
+    width: 750px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    row-gap: 10px;
+    font-family: var(--bannerFont);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 99999;
+    background-color: var(--whiteColor);
+    animation: opacity 0.5s;
+}
+
+.bannerHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.bannerLogo{
+    width: 80px;
+}
+.bannerLogo img{
+    width: 100%;
+}
+
+.closeBanner{
+    display: flex;
+    cursor: pointer;
+}
+
+.closeBanner svg {
+    width: 16px;
+}
+
+/* banner navigation */
+
+.bannerNavWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.bannerNavWrapper .nav{
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 0px;
+    border-top: 1px solid var(--bannerBorderColor);
+    border-bottom: 1px solid var(--bannerBorderColor);
+    position: relative;
+}
+
+.navActiveBorder::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--accentColor);
+}
+
+/* banner content */
+
+.bannerContentWrapper .content{
+    display: none;
+    flex-direction: column;
+    padding: 15px 0px;
+    animation: opacity 0.5s;
+    height: auto;
+    max-height: 30vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 10px !important;  
+}
+
+.cookieContentWrapper{
+    display: flex;
+    row-gap: 10px;
+    height: auto;
+    max-height: 30vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 10px !important;  
+}
+
+.bannerContentWrapper .content::-webkit-scrollbar {
+    width: 3px;
+    height: 5px;
+}
+
+.bannerContentWrapper .content::-webkit-scrollbar-thumb {
+    background-color: var(--accentColor);
+    border-radius: 10px;
+}
+
+.bannerContentWrapper .content::-webkit-scrollbar-corner {
+    background-color: #f1f1f1; 
+}
+
+.bannerCategory{
+    border-bottom: 1px solid var(--bannerBorderColor);
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+
+/* arrow */
+.arrow{
+    width: 18px;
+    margin-right: 5px;
+}
+
+.rotate{
+    transform: rotate(180deg);
+}
+
+.cookieTotal{
+    background: var(--accentColor);
+    margin-left: 5px;
+    color: var(--whiteColor);
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.cookieContentWrapper :last-child{
+    border-bottom: none;
+}
+
+.categoryHeaderWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.allProviderWrapper{
+    display: none;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.categoryName{
+    cursor: pointer;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cookiesProviderWrapper{
+    display: flex;
+    border: 1px solid var(--bannerBorderColor) !important;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 15px 18px;
+    row-gap: 5px;
+}
+
+.cookieInfoHeader{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.providerName{
+    width: 100%;
+}
+
+.cookieInfoHeader :first-child{
+    display: flex;
+    align-items: center;
+}
+
+.allCookieInfoWrapper{
+    display: none;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 10px;
+}
+
+.cookieInfoWrapper{
+    padding: 15px;
+    border-radius: 10px;
+    background: var(--cookieInfoBg);
+}
+
+.cookieBorder{
+    border: 1px solid var(--bannerBorderColor);
+    margin: 10px 0px;
+}
+
+.cookieOtherInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.learnMoreWrapper a{
+    color: var(--accentColor);
+    font-size: var(--descriptionFontSize);
+    text-decoration: underline !important;
+}
+
+.noCookie{
+    background-color: var(--cookieInfoBg);
+    padding: 15px;
+    border-radius: 10px;
+    color: var(--desciptionColor);
+    font-size: var(--descriptionFontSize);
+}
+
+/* button */
+
+.bannerButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    column-gap: 20px;
+    border-top: 1px solid var(--bannerBorderColor);
+    padding-top: 15px;
+}
+
+.btnShadow{
+    box-shadow: rgb(243 243 243) 0px -20px 25px 0px, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.bannerButtons button{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    font-family: var(--bannerFont);
+    cursor: pointer;
+    border-radius: var(--buttonRadius);
+    border: none;
+    font-size: var(--buttonFontSize);
+    color: var(--buttonColor);
+    font-weight: var(--buttonWeight);
+    border: 1px solid var(--bannerBorderColor);
+    background: white;
+}
+
+.bannerButtons button:hover{
+    background: var(--normalButtonHoverBackground) !important;
+    color: var(--normalButtonHoverColor) !important;
+}
+
+.btnActive{
+    background: var(--activeButtonBackground) !important;
+    color: var(--activeButtonColor) !important;
+}
+
+.btnActive:hover{
+    background: var(--activeButtonHoverBackgroud) !important;
+    color: var(--activeButtonHoverColor) !important;
+}
+
+/* default style */
+
+.bannerHeadline{
+    font-size: var(--healineFontSize);
+    line-height: var(--headlineLineHeight);
+    color: var(--headlineColor);
+    font-weight: var(--headlineWeight);
+}
+
+.bannerDescription{
+    font-size: var(--descriptionFontSize);
+    line-height: var(--descriptionLineHeight);
+    color: var(--desciptionColor);
+    font-weight: var(--descriptionWeight);
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 28px;
+  }
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--accentColor);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+.miniIcon{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    border: 2px solid var(--accentColor);
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    z-index: 99999;
+    background: var(--whiteColor);
+}
+
+.miniIcon svg{
+    fill: var(--accentColor);
+}
+
+.blur{
+    filter: blur(1px);
+}
+
+.divLoader {
+    border: 4px solid var(--accentColor);    /* Outer border color */
+    border-top: 4px solid var(--whiteColor); /* Top border color for visual effect */
+    border-radius: 50%;                      /* Make it a circle */
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 1s linear infinite;
+    display: none;   /* Apply the spinning animation */
+}
+
+/* Animation keyframes for spinning effect */
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+
+@keyframes opacity {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+
+@media screen and (max-width: 800px ) {
+    .consentBannerWrapper{
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 600px ) {
+
+    .bannerButtons{
+        display: flex;
+        flex-direction: column-reverse;
+        
+        justify-content: space-evenly;
+        row-gap: 10px;
+        border-top: 1px solid var(--bannerBorderColor);
+        padding-top: 15px;
+    }
+
+    .categoryToggle{
+        transform: scale(0.8);
+    }
+}
