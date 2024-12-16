@@ -101,11 +101,12 @@ var consent = {
 function onVisit(){
     var checkChoice = JSON.parse(localStorage.getItem("bannerChoice"));
 
-    gtag('consent', 'default', consent);
-
     if(checkChoice){
         gtag('consent', 'update', checkChoice);
-
+        dataLayerPush("consent_page_view");
+    }else if(!checkChoice){
+        gtag('consent', 'default', consent);
+        dataLayerPush("consent_page_view");
     }
 }
 
