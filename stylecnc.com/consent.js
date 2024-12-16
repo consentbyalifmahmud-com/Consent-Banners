@@ -1,11 +1,10 @@
-(function() {
+
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.type = "text/css";
-    link.href = "https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@0e11621565b25be2b86779e9e7fdc3a9a58c06c3/stylecnc.com/banner-style.css";
+    link.href = "https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@e33b55195b9bc862429d5748a63a4073d5b9be30/stylecnc.com/banner-style.css";
 
     document.head.appendChild(link);
-})();
 
 
 //variables related text and urls
