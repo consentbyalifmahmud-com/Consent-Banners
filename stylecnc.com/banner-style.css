@@ -412,7 +412,6 @@ input:checked + .consentSlider:before {
     width: 50px;
     height: 50px;
     position: fixed;
-    left: 10px;
     bottom: 10px;
     border: 2px solid var(--accentColor);
     border-radius: 50%;
@@ -420,6 +419,9 @@ input:checked + .consentSlider:before {
     display: none;
     z-index: 99999;
     background: var(--whiteColor);
+    left:10px;
+    top:50%; 
+    margin-top:-25px
 }
 
 .miniIcon svg{
