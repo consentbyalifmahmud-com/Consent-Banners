@@ -1,3 +1,10 @@
+var link = document.createElement("link");
+link.rel = "stylesheet";
+link.type = "text/css";
+link.href = "https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@7bca25d3129a63d203cfa58a25ca48aeab3518cd/stylecnc.com/banner-style.css";
+
+document.head.appendChild(link);
+
 function log(data) {
     console.log(data);
 }
