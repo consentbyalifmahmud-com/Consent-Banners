@@ -1,16 +1,13 @@
-@font-face {
-    font-family: 'Helvetica Regular';
-    src: url('https://cdn.jsdelivr.net/gh/consentbyalifmahmud-com/Consent-Banners@0b5625b6a27731a0a486e95d0d2397e87ec2a68b/stylecnc.com/helvetica_regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 
 :root{
 
     /* default */
     --bannerBorderColor: #ced6e0;
     --whiteColor: #fff;
-    --bannerFont: "Helvetica Regular", sans-serif;
+    --bannerFont: "Outfit", sans-serif;
     --cookieInfoBg: #f1f2f6;
 
     /* Headline */
@@ -23,7 +20,7 @@
     --descriptionFontSize: 14px;
     --desciptionColor: #444;
     --descriptionLineHeight: 24px;
-    --descriptionWeight: 100;
+    --descriptionWeight: 400;
 
     /* button */
     --buttonFontSize: 15px;
@@ -277,6 +274,7 @@
 .learnMoreWrapper a{
     color: var(--accentColor);
     font-size: var(--descriptionFontSize);
+    text-decoration: underline !important;
 }
 
 .noCookie{
