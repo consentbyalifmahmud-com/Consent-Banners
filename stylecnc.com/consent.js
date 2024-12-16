@@ -413,11 +413,11 @@ function restEvents(){
                     input.checked = true;
                 })
 
-                addBlurAndLoader(true)
+               // addBlurAndLoader(true)
 
                 setTimeout(function(){
                     bannerVisibiliy(false, true);
-                    addBlurAndLoader(false)
+                   // addBlurAndLoader(false)
                 }, control.clickLoaderDelay)
 
                 
@@ -446,11 +446,11 @@ function restEvents(){
                     
                 })
 
-                addBlurAndLoader(true)
+               // addBlurAndLoader(true)
 
                 setTimeout(function(){
                     bannerVisibiliy(false, true);
-                    addBlurAndLoader(false)
+                    //addBlurAndLoader(false)
                 }, control.clickLoaderDelay)
 
             }else if(index == 2){
