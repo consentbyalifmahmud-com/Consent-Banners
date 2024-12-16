@@ -419,6 +419,7 @@ input:checked + .slider:before {
     cursor: pointer;
     display: none;
     z-index: 99999;
+    background: var(--whiteColor);
 }
 
 .miniIcon svg{
