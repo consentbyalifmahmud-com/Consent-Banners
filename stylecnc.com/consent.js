@@ -517,7 +517,7 @@ window.addEventListener("load", function(){
                         <div class="cookieCategoryTitleRight">
                         <label class="switch">
                             <input class="bannerCheckBox" type="checkbox">
-                            <span class="slider round"></span>
+                            <span class="bannerSlider round"></span>
                         </label>
                         </div>
                     </div>
